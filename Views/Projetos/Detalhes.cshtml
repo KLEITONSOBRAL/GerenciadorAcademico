@@ -1,0 +1,32 @@
+@model GerenciadorAcademico.Models.Projeto
+@{
+    ViewData["Title"] = "Detalhes do projeto";
+}
+
+<div class="cabecalho-pagina">
+    <div>
+        <h1>Detalhes do projeto</h1>
+        <p class="subtitulo">Informações do projeto e do professor responsável.</p>
+    </div>
+</div>
+
+<section class="form-card" aria-label="Dados do projeto">
+    <dl class="detalhes">
+        <dt>Código</dt>
+        <dd>@Model.Id</dd>
+        <dt>Título</dt>
+        <dd>@Model.Titulo</dd>
+        <dt>Descrição</dt>
+        <dd class="texto-longo">@Model.Descricao</dd>
+        <dt>Carga horária</dt>
+        <dd>@Model.CargaHoraria horas</dd>
+        <dt>Professor responsável</dt>
+        <dd>@(Model.Professor?.Nome ?? "Não informado")</dd>
+        <dt>E-mail do professor</dt>
+        <dd>@(Model.Professor?.Email ?? "Não informado")</dd>
+    </dl>
+    <div class="form-actions">
+        <a asp-action="Editar" asp-route-id="@Model.Id" class="button">Editar</a>
+        <a asp-action="Index" class="button secondary">Voltar à listagem</a>
+    </div>
+</section>

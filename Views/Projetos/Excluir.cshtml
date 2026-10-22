@@ -1,0 +1,22 @@
+@model GerenciadorAcademico.Models.Projeto
+@{
+    ViewData["Title"] = "Excluir projeto";
+}
+
+<div class="cabecalho-pagina">
+    <div>
+        <h1>Excluir projeto</h1>
+        <p class="subtitulo">Confira o projeto antes de confirmar a exclusão.</p>
+    </div>
+</div>
+
+<section class="form-card">
+    <p>Deseja realmente excluir o projeto <strong>@Model.Titulo</strong>?</p>
+    <p class="observacao">Essa ação não poderá ser desfeita durante a execução atual.</p>
+
+    <form asp-action="Excluir" method="post" class="form-actions">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <button type="submit" class="button danger">Confirmar exclusão</button>
+        <a asp-action="Index" class="button secondary">Cancelar</a>
+    </form>
+</section>

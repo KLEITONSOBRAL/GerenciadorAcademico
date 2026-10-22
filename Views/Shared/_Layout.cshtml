@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Gerenciador Acadêmico</title>
+    <link rel="stylesheet" asp-append-version="true" href="~/css/site.css" />
+</head>
+<body>
+    <header class="topo">
+        <div class="conteudo topo-interno">
+            <a asp-controller="Projetos" asp-action="Index" class="marca">Gerenciador Acadêmico</a>
+            <nav aria-label="Menu principal">
+                <a asp-controller="Projetos" asp-action="Index">Projetos</a>
+                <a asp-controller="Projetos" asp-action="Cadastrar">Novo projeto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteudo principal">
+        @if (TempData["Mensagem"] is string mensagem)
+        {
+            <div class="aviso" role="status">@mensagem</div>
+        }
+
+        @RenderBody()
+    </main>
+
+    <footer class="rodape">
+        <div class="conteudo">Gerenciador Acadêmico · Projetos e professores</div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

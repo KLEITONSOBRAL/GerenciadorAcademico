@@ -1,0 +1,24 @@
+﻿@model GerenciadorAcademico.ViewModels.Login
+
+@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+<<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Index" method="post">
+           
+            <div class="mb-3">
+                <label asp-for="Username" class="form-label">User Name</label>
+                <input asp-for="Username" type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Senha" class="form-label">Senha(Protegida)</label>
+                <input asp-for="Senha" type="text" class="form-control" />
+            </div>
+            <div class="mt-4">             
+                <a asp-action="Index" class="btn btn-secondary ms-2">ENTRAR</a>
+            </div>
+        </form>
+    </div>
+</div>

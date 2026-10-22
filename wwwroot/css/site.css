@@ -1,0 +1,71 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #243247;
+    background: #f4f6f9;
+    font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
+a { color: #1e559b; }
+.conteudo { width: min(1100px, calc(100% - 36px)); margin-inline: auto; }
+.topo { background: #173f70; color: #fff; }
+.topo-interno { min-height: 68px; display: flex; gap: 24px; align-items: center; justify-content: space-between; }
+.marca { color: #fff; font-weight: 700; font-size: 1.1rem; text-decoration: none; }
+.topo nav { display: flex; flex-wrap: wrap; gap: 20px; }
+.topo nav a { color: #f4f8ff; text-decoration: none; font-size: .94rem; }
+.topo nav a:hover { text-decoration: underline; }
+.principal { flex: 1; padding-top: 38px; padding-bottom: 64px; }
+.cabecalho-pagina { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-bottom: 25px; }
+h1 { font-size: 1.8rem; line-height: 1.2; margin: 0 0 8px; }
+h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.subtitulo { color: #657184; margin: 0; }
+.form-card, .filtros, .tabela-rolagem, .estado-vazio { background: #fff; border: 1px solid #dae0e8; border-radius: 7px; }
+.form-card { max-width: 740px; padding: 28px; }
+.campo { margin-bottom: 21px; }
+.campo label, .filtros label { font-weight: 600; display: block; font-size: .93rem; margin-bottom: 8px; }
+.input { width: 100%; min-height: 41px; border: 1px solid #aeb9c9; border-radius: 5px; padding: 10px 12px; color: #243247; background: #fff; font: inherit; }
+textarea.input { min-height: 120px; resize: vertical; }
+.input:focus-visible, .button:focus-visible, a:focus-visible { outline: 3px solid #8cb4ef; outline-offset: 2px; }
+.input.input-validation-error, .input.invalido { border-color: #b52c36; }
+.validation { color: #b52c36; display: block; font-size: .86rem; margin-top: 5px; }
+.validation:empty { display: none; }
+.form-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 9px 17px; border-radius: 5px; border: 1px solid #245d9e; background: #245d9e; color: #fff; text-decoration: none; font-size: .92rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+.button:hover { background: #194b83; }
+.button.secondary { color: #29415f; background: #fff; border-color: #b5c0ce; }
+.button.secondary:hover { background: #f3f6fa; }
+.button.danger { border-color: #aa2530; background: #aa2530; }
+.button.danger:hover { background: #8d1d28; }
+.filtros { padding: 18px; display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.filtro-pesquisa { flex: 2; min-width: 200px; }
+.filtro-ordem { flex: 1; min-width: 205px; }
+.contador { margin: 23px 0 13px; color: #4b596e; font-size: .94rem; }
+.tabela-rolagem { overflow-x: auto; }
+.tabela { border-collapse: collapse; width: 100%; text-align: left; }
+.tabela th { color: #344964; background: #f1f4f8; font-weight: 700; font-size: .92rem; }
+.tabela th, .tabela td { padding: 15px; border-bottom: 1px solid #e4e9f0; }
+.tabela tr:last-child td { border-bottom: 0; }
+.celula-titulo { font-weight: 600; }
+.actions { white-space: nowrap; }
+.actions a { margin-right: 12px; text-decoration: none; font-size: .9rem; }
+.actions a:hover { text-decoration: underline; }
+.actions a:last-child { margin-right: 0; }
+.link-perigo { color: #a52933; }
+.estado-vazio { padding: 35px; text-align: center; }
+.estado-vazio p { color: #657184; }
+.link { font-weight: 600; }
+.detalhes { display: grid; grid-template-columns: 180px 1fr; gap: 13px 20px; margin: 0; }
+.detalhes dt { color: #667287; font-weight: 600; }
+.detalhes dd { margin: 0; }
+.texto-longo { white-space: pre-wrap; overflow-wrap: anywhere; }
+.observacao { color: #68758a; font-size: .92rem; }
+.aviso { background: #e9f7ed; color: #245c36; border: 1px solid #b4dbbd; padding: 14px 16px; border-radius: 5px; margin-bottom: 24px; }
+.rodape { border-top: 1px solid #dde3eb; color: #728093; padding: 22px 0; font-size: .86rem; }
+@media (max-width: 680px) {
+    .topo-interno, .cabecalho-pagina { align-items: flex-start; flex-direction: column; padding-block: 15px; }
+    .principal { padding-top: 26px; }
+    .form-card { padding: 20px; }
+    .detalhes { grid-template-columns: 1fr; gap: 4px; }
+    .detalhes dd { margin-bottom: 12px; }
+}

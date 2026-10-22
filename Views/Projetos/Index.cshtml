@@ -1,0 +1,73 @@
+@model GerenciadorAcademico.ViewModels.ProjetosIndexViewModel
+@{
+    ViewData["Title"] = "Projetos";
+}
+
+<div class="cabecalho-pagina">
+    <div>
+        <h1>Projetos acadêmicos</h1>
+        <p class="subtitulo">Consulte e organize os projetos cadastrados.</p>
+    </div>
+    <a asp-action="Cadastrar" class="button">+ Novo projeto</a>
+</div>
+
+<form method="get" asp-action="Index" class="filtros">
+    <div class="filtro-pesquisa">
+        <label for="textoPesquisa">Pesquisar pelo título</label>
+        <input class="input" id="textoPesquisa" name="textoPesquisa" value="@Model.TextoPesquisa" placeholder="Ex.: Robótica" />
+    </div>
+    <div class="filtro-ordem">
+        <label for="ordenarPor">Ordenar por</label>
+        <select class="input" id="ordenarPor" name="ordenarPor">
+            <option value="titulo" selected="@(Model.OrdenarPor == "titulo" || string.IsNullOrEmpty(Model.OrdenarPor))">Título (A-Z)</option>
+            <option value="titulo_desc" selected="@(Model.OrdenarPor == "titulo_desc")">Título (Z-A)</option>
+            <option value="carga" selected="@(Model.OrdenarPor == "carga")">Carga horária (menor)</option>
+            <option value="carga_desc" selected="@(Model.OrdenarPor == "carga_desc")">Carga horária (maior)</option>
+            <option value="professor" selected="@(Model.OrdenarPor == "professor")">Professor (A-Z)</option>
+            <option value="professor_desc" selected="@(Model.OrdenarPor == "professor_desc")">Professor (Z-A)</option>
+        </select>
+    </div>
+    <button type="submit" class="button">Aplicar</button>
+    <a asp-action="Index" class="button secondary">Limpar</a>
+</form>
+
+<p class="contador">Exibindo <strong>@Model.Projetos.Count</strong> de <strong>@Model.QuantidadeTotal</strong> projetos.</p>
+
+@if (Model.Projetos.Count == 0)
+{
+    <div class="estado-vazio">
+        <h2>Nenhum projeto encontrado</h2>
+        <p>Não há projetos para os filtros informados.</p>
+        <a asp-action="Index" class="link">Ver todos os projetos</a>
+    </div>
+}
+else
+{
+    <div class="tabela-rolagem">
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Carga horária</th>
+                    <th>Professor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var projeto in Model.Projetos)
+                {
+                    <tr>
+                        <td class="celula-titulo">@projeto.Titulo</td>
+                        <td>@projeto.CargaHoraria horas</td>
+                        <td>@(projeto.Professor?.Nome ?? "Não informado")</td>
+                        <td class="actions">
+                            <a asp-action="Detalhes" asp-route-id="@projeto.Id">Detalhes</a>
+                            <a asp-action="Editar" asp-route-id="@projeto.Id">Editar</a>
+                            <a asp-action="Excluir" asp-route-id="@projeto.Id" class="link-perigo">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
